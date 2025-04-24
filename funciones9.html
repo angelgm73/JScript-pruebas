@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones brr</title>
+</head>
+<body>
+   <input type="text" id="primero" placeholder="Escribe el primer número">
+<br>
+   <input type="text" id="segundo" placeholder="Escribe el segundo número">
+   <br> 
+   <button onclick = "dimesuma()"> Ver resultado</button>
+   <br>
+   <p id="result"></p>
+
+   <script>
+function dimesuma() {
+    var primero = document.getElementById("primero").value;
+    var segundo = document.getElementById("segundo").value;
+    var resultado = parseInt(primero) + parseInt(segundo);
+    document.getElementById("result").innerHTML = "La suma es: " + resultado;
+    alert("La suma es: " + resultado);}
+
+   </script>
+</body>
+</html>
