@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calculadora Mejorada</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding-top: 20px;
+        }
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input[type="number"], input[type="button"] {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        input[type="button"] {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        #resultado {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #eee;
+            background-color: #e9e9e9;
+            min-height: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.5s ease-out; /* Transition for the effect */
+        }
+        /* Fire effect animation */
+        @keyframes fireEffect {
+            0% { background-color: #ffcc00; box-shadow: 0 0 15px 5px #ff8800; transform: scale(1.05); }
+            50% { background-color: #ff8800; box-shadow: 0 0 25px 10px #ff4400; transform: scale(1.02); }
+            100% { background-color: #e9e9e9; box-shadow: none; transform: scale(1); }
+        }
+        .fire-effect {
+            animation: fireEffect 0.7s ease-out;
+        }
+    </style>
+    <script>
+        function displayResult(value) {
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.textContent = `Resultado = ${value}`;
+            // Apply fire effect
+            resultadoDiv.classList.add('fire-effect');
+            // Remove the class after the animation completes
+            setTimeout(() => {
+                resultadoDiv.classList.remove('fire-effect');
+            }, 700); // Match animation duration
+        }
+
+        function calculateSquare(numStr = '1') {
+            const numero = parseFloat(numStr) || 0; // Default to 0 if parsing fails
+            displayResult(numero * numero);
+        }
+
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('num1').value) || 0;
+            const num2 = parseFloat(document.getElementById('num2').value) || 0;
+            let result;
+
+            switch(operation) {
+                case 'add':
+                    result = num1 + num2;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    break;
+                case 'divide':
+                    if (num2 === 0) {
+                        result = 'Error: División por cero';
+                    } else {
+                        result = num1 / num2;
+                    }
+                    break;
+                default:
+                    result = 'Operación no válida';
+            }
+            displayResult(result);
+        }
+    </script>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Calculadora Simple</h2>
+        <div>
+            <input type="number" id="num1" placeholder="Número 1" value="5">
+            <input type="number" id="num2" placeholder="Número 2" value="3">
+        </div>
+        <div>
+            <input type="button" onclick="calculate('add')" value="Sumar (+)">
+            <input type="button" onclick="calculate('subtract')" value="Restar (-)">
+            <input type="button" onclick="calculate('multiply')" value="Multiplicar (*)">
+            <input type="button" onclick="calculate('divide')" value="Dividir (/)">
+        </div>
+         <div>
+             <input type="button" onclick="calculateSquare(document.getElementById('num1').value)" value="Cuadrado (Num 1)">
+             <input type="button" onclick="calculateSquare()" value="Cuadrado (1)">
+         </div>
+        <div id="resultado">Esperando cálculo...</div>
+    </div>
+
+</body>
+</html>
