@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Fuente</title>
+</head>
+<body>
+    <h1>Cambiar fuente de texto</h1>
+    <form id="fuenteForm">
+        <label for="fuenteInput">Selecciona una fuente:</label>
+        <select id="fuenteInput" name="fuenteInput">
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Verdana">Verdana</option>
+        </select>
+        <br><br>
+        <button type="button" onclick="cambiarFuente()">Cambiar Fuente del Texto</button>
+    </form>
+    <p id="textoCambiante">Este texto cambiará de fuente.</p>
+    <script>
+        function cambiarFuente() {
+            const fuenteSeleccionada = document.getElementById('fuenteInput').value;
+            const texto = document.getElementById('textoCambiante');
+            texto.style.fontFamily = fuenteSeleccionada;
+        }
+    </script>
+    
+    
+</body>
+</html>

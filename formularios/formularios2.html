@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Color de Texto</title>
+    <style>
+        #textoCambiante {
+            font-size: 24px;
+            margin-top: 20px;
+            transition: color 0.5s ease; /* Transición suave */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Selector de Color</h1>
+
+    <form id="colorForm">
+        <label for="colorInput">Elige un color:</label>
+        <input type="color" id="colorInput" name="colorInput" value="#000000">
+        <br><br>
+        <button type="button" onclick="cambiarColor()">Cambiar Color del Texto</button>
+    </form>
+
+    <p id="textoCambiante">Este texto cambiará de color.</p>
+
+    <script>
+        function cambiarColor() {
+            
+            const colorSeleccionado = document.getElementById('colorInput').value;
+
+            
+            const texto = document.getElementById('textoCambiante');
+
+           
+            texto.style.color = colorSeleccionado;
+        }
+    </script>
+
+</body>
+</html>

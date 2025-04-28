@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumpleaños feliz</title>
+</head>
+<body>
+    <h1>Cuanto falta para tu cumpleaños?</h1>
+    <form id="cumpleanosForm">
+        <label for="fechaCumpleanos">Selecciona tu fecha de cumpleaños:</label>
+        <input type="date" id="fechaCumpleanos" name="fechaCumpleanos" required>
+        <button type="button" onclick="calcularDias()">Calcular</button>
+        </form>
+<script>
+        function calcularDias() {
+            const fechaInput = document.getElementById('fechaCumpleanos').value;
+            const fechaCumpleanos = new Date(fechaInput);
+            const hoy = new Date();
+
+           
+            fechaCumpleanos.setFullYear(hoy.getFullYear());
+
+            
+            if (fechaCumpleanos < hoy) {
+                fechaCumpleanos.setFullYear(hoy.getFullYear() + 1);
+            }
+
+            const diferenciaTiempo = fechaCumpleanos - hoy;
+            const diasRestantes = Math.ceil(diferenciaTiempo / (1000 * 60 * 60 * 24));
+
+            alert(`Faltan ${diasRestantes} días para tu cumpleaños.`);
+        }
+    </script>
+    
+</body>
+</html>
